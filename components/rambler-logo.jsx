@@ -1,37 +1,71 @@
-export default function RamblerLogo({ className = "w-8 h-8" }) {
+// components/rambler-logo.jsx
+export default function RamblerLogo({ className = "w-14 h-14" }) {
   return (
-    <svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-      {/* Outer circle - Sky Blue */}
-      <circle cx="128" cy="128" r="120" className="stroke-primary" strokeWidth="16" />
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {/* ====== GRADIENTS ====== */}
+      <defs>
+        <linearGradient id="rambler-gradient" x1="0" y1="0" x2="100" y2="100">
+          <stop offset="0%" stopColor="#3B82F6" /> {/* Sky Blue */}
+          <stop offset="100%" stopColor="#FB923C" /> {/* Warm Orange */}
+        </linearGradient>
+      </defs>
 
-      {/* Inner circle - Sky Blue */}
-      <circle cx="128" cy="128" r="90" className="stroke-primary" strokeWidth="12" />
+      {/* ====== OUTER CIRCLE ====== */}
+      <circle
+        cx="50"
+        cy="50"
+        r="46"
+        stroke="url(#rambler-gradient)"
+        strokeWidth="6"
+      />
 
-      {/* Cardinal points - Coral */}
-      {/* Top point */}
-      <circle cx="128" cy="28" r="8" className="fill-secondary" />
-      {/* Right point */}
-      <circle cx="228" cy="128" r="8" className="fill-secondary" />
-      {/* Bottom point */}
-      <circle cx="128" cy="228" r="8" className="fill-secondary" />
-      {/* Left point */}
-      <circle cx="28" cy="128" r="8" className="fill-secondary" />
+      {/* ====== INNER DOTTED CIRCLE ====== */}
+      <circle
+        cx="50"
+        cy="50"
+        r="33"
+        stroke="url(#rambler-gradient)"
+        strokeWidth="4"
+        strokeDasharray="4 6"
+      />
 
-      {/* Compass needle - pointing northeast */}
-      {/* North arrow - Sky Blue */}
-      <path d="M 128 60 L 155 120 L 128 110 L 101 120 Z" className="fill-primary" />
+      {/* ====== DIRECTION MARKERS ====== */}
+      <g stroke="url(#rambler-gradient)" strokeWidth="4" strokeLinecap="round">
+        {/* North */}
+        <line x1="50" y1="10" x2="50" y2="3" />
+        {/* East */}
+        <line x1="90" y1="50" x2="97" y2="50" />
+        {/* South */}
+        <line x1="50" y1="90" x2="50" y2="97" />
+        {/* West */}
+        <line x1="10" y1="50" x2="3" y2="50" />
+      </g>
 
-      {/* South arrow - Sand */}
-      <path d="M 128 196 L 155 136 L 128 146 L 101 136 Z" className="fill-accent" />
-
-      {/* East arrow - Coral */}
-      <path d="M 196 128 L 136 155 L 146 128 L 136 101 Z" className="fill-secondary" />
-
-      {/* West arrow - Sand */}
-      <path d="M 60 128 L 120 155 L 110 128 L 120 101 Z" className="fill-accent" />
-
-      {/* Center circle - Primary */}
-      <circle cx="128" cy="128" r="12" className="fill-primary" />
+      {/* ====== COMPASS NEEDLE (TRIANGLE OUTLINE STYLE) ====== */}
+      <g transform="rotate(25 50 50)">
+        {/* Triangle outline, soft and modern */}
+        <path
+          d="M50 30 L58 50 L50 70 L42 50 Z"
+          stroke="url(#rambler-gradient)"
+          strokeWidth="3.5"
+          fill="none"
+        />
+        {/* Center circle */}
+        <circle
+          cx="50"
+          cy="50"
+          r="5"
+          fill="url(#rambler-gradient)"
+          stroke="none"
+        />
+      </g>
     </svg>
-  )
+  );
 }
